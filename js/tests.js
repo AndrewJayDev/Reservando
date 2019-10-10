@@ -70,8 +70,16 @@ describe('Test de buscarRestaurante(id)', function(){
         expect(resultado).to.equal("No se ha encontrado ningún restaurant")
       });
 });
-describe('Test de obtenerRestaurantes()', function(){
-//test para verificar si devuelve los restuarantes correctos segun los filtros
-//test para verificar que no funciona si el valor recibido es distinto a null
 
+describe('Test de obtenerRestaurantes(filtroRubro, filtroCiudad, filtroHorario)', function(){
+//test para verificar si devuelve los restuarantes correctos segun los filtros
+it('test para verificar si devuelve los restuarantes correctos segun los filtros', function(){
+let resultado=listado.obtenerRestaurantes("Asiática","Londres","15:00");
+expect(resultado[0]).to.equal(listadoDeRestaurantes[1]);
+});
+//test para verificar que no funciona si el valor recibido es distinto a null
+it('test para verificar que no funciona si el valor recibido es null', function(){
+  let resultado=listado.obtenerRestaurantes(null);
+  expect(resultado).to.eql([]);
+  });
 });
