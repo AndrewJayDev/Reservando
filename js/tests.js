@@ -2,8 +2,8 @@ var expect = chai.expect;
 
 describe('Test de reservarHorario()', function(){
 	it('Cuando se reserva un horario de un restaurant, el horario correspondiente se elimina del arreglo.', function(){
+        listadoDeRestaurantes[0].reservarHorario("15:30");
         let horarios=listadoDeRestaurantes[0].horarios;
-        listadoDeRestaurantes[0].reservarHorario("13:00");
 		expect(horarios).to.have.lengthOf(2);
     });
     it('Cuando se reserva un horario que el restaurant no posee, el arreglo se mantiene igual.', function(){
@@ -20,8 +20,8 @@ describe('Test de reservarHorario()', function(){
 	});
 });
 describe('Test de obtenerPuntuación()', function(){
-	it('Dado un restaurant con determinadas calificaciones, la puntuación (que es el promedio de ellas) se calcula correctamente.', function(){
-        let puntuacion= listadoDeRestaurantes[0].obtenerPuntuacion();
+	it('Dado un restaurant con determinadas calificaciones, la puntuación (que es el promedio de ellas) se calcula correctamente.', function(){    
+    let puntuacion= listadoDeRestaurantes[0].obtenerPuntuacion();
 		expect(puntuacion).to.equal(7.4);
     });
     it('Dado un restaurant que no tiene ninguna calificación, la puntuación es igual a 0.', function(){
@@ -65,9 +65,9 @@ describe('Test de buscarRestaurante(id)', function(){
       expect(resultado).to.equal(listadoDeRestaurantes[0])
     });
     //testear si devuelve el error si el id pasado por parametro no se encuentra 
-    it('testear si encuentra bien el id pasado por parametro.', function(){
-        let resultado=listado.buscarRestaurante(67);
-        expect(resultado).to.equal("No se ha encontrado ningún restaurant")
+    it('testear si devuelve el error si el id pasado por parametro no se encuentra', function(){
+        let resultadoError=listado.buscarRestaurante(67);
+        expect(resultadoError).to.equal("No se ha encontrado ningún restaurant")
       });
 });
 
