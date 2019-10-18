@@ -48,7 +48,7 @@ Listado.prototype.obtenerCiudades = function() {
 //Obtiene todos los rubros de los restaurantes sin repetidos. Su funcionamiento es similar a obtenerCiudades()
 Listado.prototype.obtenerRubros = function() {
     var rubrosConRepeticiones = this.restaurantes.map(function(restaurante){
-        return restaurante.ubicacion;
+        return restaurante.rubro;
     })
     return sacarRepiticiones(rubrosConRepeticiones).sort();
 
@@ -58,7 +58,7 @@ Listado.prototype.obtenerRubros = function() {
 //convertir en uno solo
 Listado.prototype.obtenerHorarios = function() {
     var arregloHorariosConRepeticiones = this.restaurantes.map(function(restaurante){
-        return restaurante.ubicacion;
+        return restaurante.horarios;
     })
   return sacarRepiticiones(arregloHorariosConRepeticiones).sort()
   
@@ -112,6 +112,13 @@ var listadoDeRestaurantes = [
     new Restaurant(22, "Byron Hoxton", "Hamburguesa", "Londres", ["14:00", "16:00", "21:30"], "../img/hamburguesa3.jpg", [4, 9, 10, 10, 6]),
     new Restaurant(23, "Chez Moi", "Ensalada", "París", ["11:00", "12:00", "14:30"], "../img/ensalada1.jpg", [8, 4, 5, 5, 5, 5]),
     new Restaurant(24, "Maison Kayser", "Desayuno", "Nueva York", ["21:00", "22:30", "15:00"], "../img/desayuno2.jpg", [9, 5, 7, 6, 7]),
+    new Restaurant(24, "Pastabilities", "Pasta", "Syracuse", ["18:00", "18:30", "20:00"], "../img/pastabilities.jpg", [8, 7, 7, 6, 8]),
+    new Restaurant(24, "Dinosaur BBQ", "Americana", "Syracuse", ["12:00", "11:30", "13:00"], "../img/dinosaurbbq.jpg", [8, 7, 7, 6, 8]),
+    new Restaurant(24, "Stellas Diner", "Desayuno", "Syracuse", ["7:00", "8:30", "9:00"], "../img/stellasdiner.jpg", [8, 7, 4, 6, 8]),
+    new Restaurant(24, "Papanato", "Argentina", "Córdoba", ["21:00", "22:30", "21:30"], "../img/papanato.jpg", [8, 6, 7, 6, 8]),
+    new Restaurant(24, "Cochera", "Argentina", "Córdoba", ["21:00", "22:30", "21:30"], "../img/cochera.jpg", [8, 6, 7, 6, 8]),
+    new Restaurant(24, "Papagayo", "Argentina", "Córdoba", ["21:00", "22:30", "21:30"], "../img/papagayo.jpg", [8, 6, 7, 6, 8]),
+
 ];
 
 //Se crea un nuevo listado, asignandole el listado de restaurantes creado anteriormente.

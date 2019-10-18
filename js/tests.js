@@ -83,3 +83,16 @@ it('test para verificar que no funciona si el valor recibido es null', function(
   expect(resultado).to.eql([]);
   });
 });
+
+describe('Test de Restaurante', function(){
+  // calcule correctamente su precio base
+  it('test para verificar si devuelve los restuarantes correctos segun los filtros', function(){
+    let reserva1 = new Reserva (new Date(2018, 7, 24, 11, 00), 8, 350, "DES1");
+    expect(reserva1.precioBase()).to.equal(2800)
+  });
+  //calcule correctamente su precio final, contemplando bien los descuentos y los adicionales
+  it('calcule correctamente su precio final, contemplando bien los descuentos y los adicionales', function(){
+    var reserva2 = new Reserva (new Date(2018, 7, 27, 14, 100), 2, 150, "DES200")
+    expect(reserva2.precioFinal()).to.equal(100)
+  });
+  });
