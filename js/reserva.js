@@ -15,9 +15,10 @@ Reserva.prototype.descuentoCodigo=function(){
         //código que descuenta 15% del precio base
         if(this.codigoDeDescuento==='DES15'){
             descuentoCodigo=precioBase*.15;;
-         //código que descuenta 15% del precio base
+         //código que descuenta $200 del precio base
         }else if(this.codigoDeDescuento==='DES200'){
             descuentoCodigo=200;
+            //código que descuenta el precio por persona del precio base
         }else if('DES1'){
             descuentoCodigo=this.precioPorPersona;
         }else{
@@ -27,10 +28,13 @@ Reserva.prototype.descuentoCodigo=function(){
 };
 Reserva.prototype.descuentoGrupo=function(){
     let descuentoGrupo;
+    //descuento por grupo grande entre 4 y 6 personas = 5%
     if(this.cantidadDePersonas>=4 && this.cantidadDePersonas<=6){
         descuentoGrupo=precioBase*.05;
+         //descuento por grupo grande entre 6 y 7 personas = 10%
     }else if(this.cantidadDePersonas>=7 && this.cantidadDePersonas<=8){
         descuentoGrupo=precioBase*.10;
+         //descuento por grupo grande entre más que 8 personas = 15%
     }else if(this.cantidadDePersonas>8){
         descuentoGrupo=precioBase*.15;
     }else{
@@ -40,6 +44,7 @@ Reserva.prototype.descuentoGrupo=function(){
 };
 Reserva.prototype.adicionalesWeekend=function(){
     let adicionalesWeekend;
+        //adicional que se cobra por ser fin de semana 10%
         if(this.horario.getDay()>=4){
             adicionalesWeekend = precioBase*0.10
         }else{
@@ -49,6 +54,7 @@ Reserva.prototype.adicionalesWeekend=function(){
 };
 Reserva.prototype.adicionalesHora=function(){
     let adicionalesHora;
+    //adicional que se cobra por horarios especificos 5%
     if ((this.horario.getHours() >=13) && (this.horario.getHours()<=14)) {
         adicionalesHora = precioBase*0.05;
     } else if ((this.horario.getHours() >=20) && (this.horario.getHours()<=21)) {
@@ -60,9 +66,9 @@ Reserva.prototype.adicionalesHora=function(){
 };
 
 Reserva.prototype.calcularAdicionales=function(){
-    let adicionalesWeekend=this.adicionalesWeekend();
-    let adicionalesHora=this.adicionalesHora();
-return adicionalesHora+adicionalesWeekend;
+        let adicionalesWeekend=this.adicionalesWeekend();
+        let adicionalesHora=this.adicionalesHora();
+    return adicionalesHora+adicionalesWeekend;
 }
 Reserva.prototype.calcularDescuento=function(){
         let descuentoCodigo=this.descuentoCodigo();

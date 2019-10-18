@@ -24,12 +24,12 @@ Restaurant.prototype.obtenerPuntuacion = function() {
     if (this.calificaciones.length === 0) {
         return 0;
     } else {
-        return promedio(this.calificaciones)
+        return this.promedio(this.calificaciones)
     }
 
 }
 
-let sumar= function(numeros){
+Restaurant.prototype.sumar= function(numeros){
     let sumatoria=0
     for (var i = 0; i < numeros.length; i++) {
         sumatoria += numeros[i]
@@ -37,8 +37,8 @@ let sumar= function(numeros){
     return sumatoria 
 }
 
-let promedio = function(numeros){
-    let sumatoria1= sumar(numeros);
+Restaurant.prototype.promedio = function(numeros){
+    let sumatoria1= this.sumar(numeros);
     let promedio = sumatoria1 / numeros.length;
     return Math.round(promedio * 10) / 10;
 }

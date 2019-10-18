@@ -1,14 +1,14 @@
 //funcion para sacar las repeticiones de un array y devolver un array sin repeticiones
-let sacarRepiticiones = function(array){
+
+var Listado = function(restaurantes) {
+    this.restaurantes = restaurantes;
+}
+Listado.prototype.sacarRepiticiones = function(array){
     let arraySinRepeticiones = array.filter(function(elem, index, self) {
           return index === self.indexOf(elem);
      });
      return arraySinRepeticiones
  }
-
-var Listado = function(restaurantes) {
-    this.restaurantes = restaurantes;
-}
 
 Listado.prototype.reservarUnHorario = function(id, horario) {
     //Busca el objeto que posee el id dado
@@ -42,7 +42,7 @@ Listado.prototype.obtenerCiudades = function() {
     var ciudadesConRepeticiones = this.restaurantes.map(function(restaurante){
         return restaurante.ubicacion;
     })
-   return sacarRepiticiones(ciudadesConRepeticiones).sort();
+   return this.sacarRepiticiones(ciudadesConRepeticiones).sort();
 }
 
 //Obtiene todos los rubros de los restaurantes sin repetidos. Su funcionamiento es similar a obtenerCiudades()
@@ -50,7 +50,7 @@ Listado.prototype.obtenerRubros = function() {
     var rubrosConRepeticiones = this.restaurantes.map(function(restaurante){
         return restaurante.rubro;
     })
-    return sacarRepiticiones(rubrosConRepeticiones).sort();
+    return this.sacarRepiticiones(rubrosConRepeticiones).sort();
 
 }
 //Obtiene todos los horarios de los restaurantes (sin repetidos). Está funcionalidad es un poco más compleja ya que un restaurante
@@ -60,9 +60,10 @@ Listado.prototype.obtenerHorarios = function() {
     var arregloHorariosConRepeticiones = this.restaurantes.map(function(restaurante){
         return restaurante.horarios;
     })
-  return sacarRepiticiones(arregloHorariosConRepeticiones).sort()
+  return this.sacarRepiticiones(arregloHorariosConRepeticiones).sort()
   
 }
+
 
 //Función que recibe los filtros que llegan desde el HTML y filtra el arreglo de restaurantes.
 //Solo se filtra si el valor recibido es distinto de null.
@@ -118,9 +119,9 @@ var listadoDeRestaurantes = [
     new Restaurant(24, "Papanato", "Argentina", "Córdoba", ["21:00", "22:30", "21:30"], "../img/papanato.jpg", [8, 6, 7, 6, 8]),
     new Restaurant(24, "Cochera", "Argentina", "Córdoba", ["21:00", "22:30", "21:30"], "../img/cochera.jpg", [8, 6, 7, 6, 8]),
     new Restaurant(24, "Papagayo", "Argentina", "Córdoba", ["21:00", "22:30", "21:30"], "../img/papagayo.jpg", [8, 6, 7, 6, 8]),
-
 ];
 
 //Se crea un nuevo listado, asignandole el listado de restaurantes creado anteriormente.
 var listado = new Listado(listadoDeRestaurantes)
+
 
